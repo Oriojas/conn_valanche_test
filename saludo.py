@@ -44,7 +44,7 @@ result = contract.functions.leerSaludo().call()
 
 print(result)
 
-function_data = contract.functions.guardarSaludo("Saludo 7 desde Python").build_transaction({
+function_data = contract.functions.guardarSaludo({"Saludo 9 desde Python"}).build_transaction({
     "from": WALLET,
     "gas": 2000000,
     "maxFeePerGas": w3.to_wei('35', 'gwei'),
