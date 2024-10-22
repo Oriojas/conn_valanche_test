@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-with open("contracts/contract_abi.json") as f:
+with open("artifacts/Saludo_metadata.json") as f:
     info_json = json.load(f)
 ABI = info_json["output"]["abi"]
 
-CONTRACT = "0x0B5cc2045DF06C1E5356d8F1380c626f6DCFEB40"
+CONTRACT = "0x14DD0E4DE24d5b2dAddf1D472bC2bA2aC75f7D58"
 WALLET = os.environ["WALLET"]
 PRIV_KEY = os.environ["PRIV_KEY"]
 
@@ -42,11 +42,10 @@ function_data = contract.functions.guardarSaludo("Hola desde la casa de Oscar").
 })
 
 signed_transaction = w3.eth.account.sign_transaction(function_data, private_key)
-transaction_hash = w3.eth.send_raw_transaction(signed_transaction.rawTransaction)
+transaction_hash = w3.eth.send_raw_transaction(signed_transaction.raw_transaction)
 
 print("Hash send transaction: ", transaction_hash.hex())
 
 result2 = contract.functions.leerSaludo().call()
 
 print("Resultado de la consulta:", result2)
-
